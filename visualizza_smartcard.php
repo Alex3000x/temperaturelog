@@ -2,7 +2,7 @@
 
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
 $query = "SELECT *
-          FROM utenti
+          FROM smartcard
           WHERE 1";
 $result1 = mysqli_query($connection, $query);
 
@@ -13,7 +13,7 @@ print "
             </head>
             <body>
                 <center>
-                    <h1>GESTIONE UTENTI</h1>
+                    <h1>GESTIONE SMART CARD</h1>
                     <table border>";
 
 if(mysqli_num_rows($result1) != 0)
@@ -21,23 +21,25 @@ if(mysqli_num_rows($result1) != 0)
     print "
                         <tr>
                             <th>N°</th>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Data di nascita</th>
+                            <th>ID Carta</th>
+                            <th>Utente associato</th>
                             <th colspan=2>Azioni</th>
                         </tr>";
     $i = 1;
     while ($row = mysqli_fetch_array($result1))
     {
-        $timestamp = strtotime($row['datanascita']);
-        $date = date('d/m/Y', $timestamp);
-
         print "
                         <tr>
                             <td>$i</td>
-                            <td>$row[nome]</td>
-                            <td>$row[cognome]</td>
-                            <td>$date</td>
+                            <td>$row[codice]</td>";
+        $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+        $query = "SELECT u.idutente, u.nome, u.cognome, s.codice
+                  FROM utenti AS u, smartcard AS s
+                  WHERE s.idutente = u.idutente
+                  GROUP BY s.codice, u.nome, u.cognome";
+        $result2 = mysqli_query($connection, $query);
+        print "
+                            <td>$row[nome]$row[cognome]</td>
                             <td><a href=modifica_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
                             <td><a href=azione_di_eliminazione.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
                         </tr>";
@@ -45,7 +47,7 @@ if(mysqli_num_rows($result1) != 0)
     }
 }
 else
-    print "Nessun utente memorizzato nel database";
+    print "Nessuna smart card memorizzata nel database";
 
 print "
                     </table>
@@ -56,8 +58,8 @@ print "
             <footer>
                 <center>
                     <br>
-                    <form action=inserisci_utente.html>
-                        <input type=submit value=Inserisci&nbsp;utente>
+                    <form action=inserisci_smartcard.html>
+                        <input type=submit value=Aggiungi&nbsp;smart&nbsp;card>
                     </form>
                 </center>
             </footer>
