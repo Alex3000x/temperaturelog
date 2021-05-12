@@ -38,8 +38,8 @@ if(mysqli_num_rows($result1) != 0)
                             <td>$row[nome]</td>
                             <td>$row[cognome]</td>
                             <td>$date</td>
-                            <td><a href=modifica_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                            <td><a href=azione_di_eliminazione.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                            <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                            <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
                         </tr>";
         $i++;
     }
@@ -56,7 +56,7 @@ print "
             <footer>
                 <center>
                     <br>
-                    <form action=inserisci_utente.html>
+                    <form action=inserisci_dati_utente.html>
                         <input type=submit value=Inserisci&nbsp;utente>
                     </form>
                 </center>

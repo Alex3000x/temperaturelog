@@ -14,43 +14,53 @@ $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
 $idutente = $params['id'];
+$cognome = $_POST["cognome"];
+$nome = $_POST["nome"];
+$datanascita = $_POST["datanascita"];
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
-$query = "SELECT *
-          FROM utenti
-          WHERE idutente = $idutente";
-$result = mysqli_query($connection, $query);
+$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
 
-if(mysqli_num_rows($result) != 0)
+if(strlen($cognome) != 0)
 {
-    while ($row = mysqli_fetch_array($result))
-    {
-        $nome = $row['nome'];
-        $cognome = $row['cognome'];
-        $datanascita = $row['datanascita'];
-    }
+  $query = "UPDATE utenti
+            SET cognome = '$cognome'
+            WHERE idutente = '$idutente'";
+  mysqli_query($connection,$query);
 }
 
-print "
+if(strlen($nome) != 0)
+{
+  $query = "UPDATE utenti
+            SET nome = '$nome'
+            WHERE idutente = '$idutente'";
+  mysqli_query($connection,$query);
+}
 
-<html>
-  <head>
-    <title>temperaturelog</title>
-  </head>
-  <body>
-    <center>
-    <h1>GESTIONE UTENTI</h1>
-    <form action=azione_di_modifica.php?id=$idutente method=POST><br><br>
-            <h3>Modifica i dati dell'utente<br></h3>
-			Nome: <input type=text name=nome value=$nome><br><br>
-			Cognome: <input type=text name=cognome value=$cognome><br><br>
-      Data di nascita: <input type=date name=datanascita value=$datanascita><br><br>
-			<input type=submit value=Applica&nbsp;modifiche>
-		</form>
-  </center>
-	</body>
-</html>";
+if(strlen($datanascita) != 0)
+{
+  $query = "UPDATE utenti
+            SET datanascita = '$datanascita'
+            WHERE idutente = '$idutente'";
+  mysqli_query($connection,$query);
+}
 
 mysqli_close($connection);
+
+print "
+        <html>
+            <head>
+                <title>temperaturelog</title>
+            </head>
+            <body>
+                <center>
+                <h1>GESTIONE UTENTI</h1><br><br>
+                <h3>Modifiche apportate correttamente all'utente</h3>
+                <a href=index.html>Torna alla home</a>
+                <a href=gestione_utenti.html>Torna alla gestione utenti</a>
+                </center>
+            </body>
+        </html>";
+
+session_unset();
 session_destroy();
 ?>

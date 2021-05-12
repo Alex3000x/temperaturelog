@@ -40,8 +40,8 @@ if(mysqli_num_rows($result1) != 0)
         $result2 = mysqli_query($connection, $query);
         print "
                             <td>$row[nome]$row[cognome]</td>
-                            <td><a href=modifica_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                            <td><a href=azione_di_eliminazione.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                            <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                            <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
                         </tr>";
         $i++;
     }
@@ -58,7 +58,7 @@ print "
             <footer>
                 <center>
                     <br>
-                    <form action=inserisci_smartcard.html>
+                    <form action=inserisci_dati_smartcard.php>
                         <input type=submit value=Aggiungi&nbsp;smart&nbsp;card>
                     </form>
                 </center>
