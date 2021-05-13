@@ -20,11 +20,11 @@ $errore = "Tutti i campi segnati con un asterisco (*) sono obbligatori";
       <h1>GESTIONE SMART CARD</h1>
       <form id="form" name="myForm" action="inserisci_smartcard.php" onsubmit=validateForm() method="POST"><br><br>
         <h3>Inserisci i dati della smart card<br></h3>
-        ID Carta: <input type="text" name="codice">
+        ID Carta: <input type="text" name="codice" >
         <span class="required">*</span><br><br>
         <label for="utente">Utente da associare:</label>
-        <select name="idutente" id="scelta_utente">
-          <option value=' '></option>
+        <select name="idutente" id="scelta_utente" required>
+          <option value=""></option>
 
 <?php
 $nome = "";

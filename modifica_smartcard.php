@@ -13,34 +13,25 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idutente = $params['id'];
-$cognome = $_POST["cognome"];
-$nome = $_POST["nome"];
-$datanascita = $_POST["datanascita"];
+$idsmartcard = $params['id'];
+$codice = $_POST["codice"];
+$idutente = $_POST["idutente"];
 
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
 
-if(strlen($cognome) != 0)
+if(strlen($codice) != 0)
 {
-  $query = "UPDATE utenti
-            SET cognome = '$cognome'
-            WHERE idutente = '$idutente'";
+  $query = "UPDATE smartcard
+            SET codice = '$codice'
+            WHERE idsmartcard = '$idsmartcard'";
   mysqli_query($connection,$query);
 }
 
-if(strlen($nome) != 0)
+if(strlen($idutente) != 0)
 {
-  $query = "UPDATE utenti
-            SET nome = '$nome'
-            WHERE idutente = '$idutente'";
-  mysqli_query($connection,$query);
-}
-
-if(strlen($datanascita) != 0)
-{
-  $query = "UPDATE utenti
-            SET datanascita = '$datanascita'
-            WHERE idutente = '$idutente'";
+  $query = "UPDATE smartcard
+            SET idutente = '$idutente'
+            WHERE idsmartcard = '$idsmartcard'";
   mysqli_query($connection,$query);
 }
 
@@ -53,10 +44,10 @@ print "
             </head>
             <body>
                 <center>
-                <h1>GESTIONE UTENTI</h1><br><br>
-                <h3>Modifiche apportate correttamente all'utente</h3>
+                <h1>GESTIONE SMART CARD</h1><br><br>
+                <h3>Modifiche apportate correttamente alla smart card</h3>
                 <a href=index.html>Torna alla home</a>
-                <a href=gestione_utenti.html>Torna alla gestione utenti</a>
+                <a href=gestione_smartcard.html>Torna alla gestione smart card</a>
                 </center>
             </body>
         </html>";

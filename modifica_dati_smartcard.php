@@ -13,40 +13,87 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idutente = $params['id'];
+$idsmartcard = $params['id'];
+$codice = "";
+$idutente = "";
 
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
 $query = "SELECT *
-          FROM utenti
-          WHERE idutente = $idutente";
-$result = mysqli_query($connection, $query);
+          FROM smartcard
+          WHERE idsmartcard = $idsmartcard";
+$result1 = mysqli_query($connection, $query);
 
-if(mysqli_num_rows($result) != 0)
+if(mysqli_num_rows($result1) != 0)
 {
-    while ($row = mysqli_fetch_array($result))
+    while ($row = mysqli_fetch_array($result1))
     {
-        $nome = $row['nome'];
-        $cognome = $row['cognome'];
-        $datanascita = $row['datanascita'];
+        $codice = $row['codice'];
+        $idutente = $row['idutente'];
     }
 }
-
+$iduser = $idutente;
 print "
 
 <html>
+<style>
+.required {color: #FF0000;}
+</style>
   <head>
     <title>temperaturelog</title>
   </head>
   <body>
     <center>
-    <h1>GESTIONE UTENTI</h1>
-    <form action=modifica_utente.php?id=$idutente method=POST><br><br>
-            <h3>Modifica i dati dell'utente<br></h3>
-			Nome: <input type=text name=nome value=$nome><br><br>
-			Cognome: <input type=text name=cognome value=$cognome><br><br>
-      Data di nascita: <input type=date name=datanascita value=$datanascita><br><br>
-			<input type=submit value=Applica&nbsp;modifiche>
-		</form>
+    <h1>GESTIONE SMART CARD</h1>
+    <form action=modifica_smartcard.php?id=$idsmartcard method=POST><br><br>
+        <h3>Modifica i dati della smart card<br></h3>
+        ID Carta: <input type=text name=codice value=$codice required>
+        <span class=required>*</span><br><br>
+        <label for=utente>Utente da associare:</label>";
+
+$nome = "18";
+$cognome = "chi ride è gay";
+
+$query = "SELECT *
+          FROM utenti
+          WHERE idutente = '$idutente'";
+$result2 = mysqli_query($connection, $query);
+
+if(mysqli_num_rows($result2) != 0)
+{
+  print "
+        <select name=idutente id=scelta_utente>";
+    while ($row = mysqli_fetch_array($result2))
+    {
+      $nome = $row['nome'];
+      $cognome = $row['cognome'];
+      print "    
+          <option value=$idutente selected>$nome $cognome</option>";
+    }
+}
+
+$query = "SELECT *
+          FROM utenti";
+$result3 = mysqli_query($connection, $query);
+
+if(mysqli_num_rows($result3) != 0)
+{
+    while ($row = mysqli_fetch_array($result3))
+    {
+      $idutente = $row['idutente'];
+      $nome = $row['nome'];
+      $cognome = $row['cognome'];
+      print "    
+          <option value=$idutente>$nome $cognome</option>";
+    }
+}
+
+print "
+
+        </select>
+        <span class=required>*<br><br></span>
+        <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>
+        <input type=submit value=Applica&nbsp;modifiche>
+      </form>
   </center>
 	</body>
 </html>";

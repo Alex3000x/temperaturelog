@@ -14,8 +14,10 @@ print "
             <body>
                 <center>
                     <h1>GESTIONE UTENTI</h1>
-                    <table border>";
-
+                    <table border>
+                    <p>NON C'È NIENTE!</p>";
+/*
+                    
 if(mysqli_num_rows($result1) != 0)
 {
     print "
@@ -45,13 +47,11 @@ if(mysqli_num_rows($result1) != 0)
     }
 }
 else
-    print "Nessun utente memorizzato nel database";
+    print "Nessun utente memorizzato nel database";*/
 mysqli_close($connection);
 ?>
 
                     </table><br>
-                    <form action=inserisci_dati_utente.html>
-                        <input type=submit value=Inserisci&nbsp;utente>
                     </form>
                 </center>
             </body>

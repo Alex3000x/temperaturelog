@@ -33,7 +33,7 @@ if(mysqli_num_rows($result1) != 0)
                             <td>$i</td>
                             <td>$row[codice]</td>";
         $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
-        $query = "SELECT user.idutente, user.nome, user.cognome
+        $query = "SELECT user.idutente, user.nome, user.cognome, smart.idsmartcard
                   FROM utenti AS user, smartcard AS smart
                   WHERE smart.idutente = user.idutente
                   AND smart.codice = '$row[codice]'
@@ -48,8 +48,8 @@ if(mysqli_num_rows($result1) != 0)
             
                 print "
                                 <td>$row[nome] $row[cognome]</td>
-                                <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                                <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                                <td><a href=modifica_dati_smartcard.php?id=$row[idsmartcard]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                                <td><a href=elimina_smartcard.php?id=$row[idsmartcard]><img src=./immagini/elimina.png alt=Elimina></a></td>
                             </tr>";
             }
         }
@@ -58,20 +58,18 @@ if(mysqli_num_rows($result1) != 0)
 }
 else
     print "Nessuna smart card memorizzata nel database";
-
-print "
-                    </table>
-                </center>
-            </body>";
 mysqli_close($connection);
-print "
-            <footer>
-                <center>
-                    <br>
+?>
+
+                    </table><br>
                     <form action=inserisci_dati_smartcard.php>
                         <input type=submit value=Aggiungi&nbsp;smart&nbsp;card>
                     </form>
                 </center>
+            </body>
+            <footer>
+                <center>
+                <a href=index.html>Home</a></td>
+                </center>
             </footer>
-        </html>";
-?>
+        </html>
