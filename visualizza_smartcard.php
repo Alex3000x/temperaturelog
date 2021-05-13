@@ -33,16 +33,26 @@ if(mysqli_num_rows($result1) != 0)
                             <td>$i</td>
                             <td>$row[codice]</td>";
         $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
-        $query = "SELECT u.idutente, u.nome, u.cognome, s.codice
-                  FROM utenti AS u, smartcard AS s
-                  WHERE s.idutente = u.idutente
-                  GROUP BY s.codice, u.nome, u.cognome";
+        $query = "SELECT user.idutente, user.nome, user.cognome
+                  FROM utenti AS user, smartcard AS smart
+                  WHERE smart.idutente = user.idutente
+                  AND smart.codice = '$row[codice]'
+                  GROUP BY smart.codice, user.nome, user.cognome";
         $result2 = mysqli_query($connection, $query);
-        print "
-                            <td>$row[nome]$row[cognome]</td>
-                            <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                            <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
-                        </tr>";
+        if(mysqli_num_rows($result2) != 0)
+        {
+            while ($row = mysqli_fetch_array($result2))
+            {
+                $nome = $row['nome'];
+                $cognome = $row['cognome'];
+            
+                print "
+                                <td>$row[nome] $row[cognome]</td>
+                                <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                                <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                            </tr>";
+            }
+        }
         $i++;
     }
 }

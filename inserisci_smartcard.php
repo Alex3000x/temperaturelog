@@ -1,29 +1,45 @@
 <?php
 
-$nome = $_POST["nome"];
-$cognome = $_POST["cognome"];
-$datanascita = $_POST["datanascita"];
+$codice = 0;
+$idutente = 0;
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
-$query = "INSERT
-          INTO utenti (nome, cognome, datanascita)
-          VALUES ('$nome','$cognome','$datanascita')";
+if ($_POST['idutente'] == "" || $_POST['codice'] == "")
+{
+    echo $codice;
+    echo $idutente;
+    echo "nooooo";
+    header("Location: inserisci_dati_smartcard.php");
+}
+else
+{
+    $codice = $_POST["codice"];
+    $idutente = $_POST["idutente"];
+    echo $codice;
+    echo $idutente;
+    echo "yeeeee";
+    
 
-mysqli_query($connection,$query);
-mysqli_close($connection);
+    $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+    $query = "INSERT
+            INTO smartcard (idutente, codice)
+            VALUES ('$idutente','$codice')";
 
-print "
+    mysqli_query($connection,$query);
+    mysqli_close($connection);
+
+    print "
         <html>
             <head>
                 <title>temperaturelog</title>
             </head>
             <body>
                 <center>
-                <h1>GESTIONE UTENTI</h1><br><br>
-                <h3>Utente inserito correttamente nel database</h3>
+                <h1>GESTIONE SMART CARD</h1><br><br>
+                <h3>Smart card inserita correttamente nel database</h3>
                 <a href=index.html>Torna alla home</a>
-                <a href=gestione_utenti.html>Torna alla gestione utenti</a>
+                <a href=gestione_smartcard.html>Torna alla gestione smart card</a>
                 </center>
             </body>
         </html>";
+}
 ?>
