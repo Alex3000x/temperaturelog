@@ -2,13 +2,13 @@
 
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
 $query = "SELECT *
-          FROM smartcard
-          WHERE 1";
+          FROM smartcard";
 $result1 = mysqli_query($connection, $query);
 
 print "
         <html>
             <head>
+                <link rel=icon href=favicon2.ico>
                 <title>temperaturelog</title>
             </head>
             <body>
@@ -33,11 +33,11 @@ if(mysqli_num_rows($result1) != 0)
                             <td>$i</td>
                             <td>$row[codice]</td>";
         $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
-        $query = "SELECT user.idutente, user.nome, user.cognome, smart.idsmartcard
+        $query = "SELECT user.idutente, user.nome, user.cognome, smart.idsmartcard, smart.codice
                   FROM utenti AS user, smartcard AS smart
                   WHERE smart.idutente = user.idutente
                   AND smart.codice = '$row[codice]'
-                  GROUP BY smart.codice, user.nome, user.cognome";
+                  ORDER BY smart.codice";
         $result2 = mysqli_query($connection, $query);
         if(mysqli_num_rows($result2) != 0)
         {
@@ -47,7 +47,7 @@ if(mysqli_num_rows($result1) != 0)
                 $cognome = $row['cognome'];
             
                 print "
-                                <td>$row[nome] $row[cognome]</td>
+                                <td>$row[cognome] $row[nome]</td>
                                 <td><a href=modifica_dati_smartcard.php?id=$row[idsmartcard]><img src=./immagini/modifica.png alt=Modifica></a></td>
                                 <td><a href=elimina_smartcard.php?id=$row[idsmartcard]><img src=./immagini/elimina.png alt=Elimina></a></td>
                             </tr>";

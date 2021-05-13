@@ -9,6 +9,7 @@ $result1 = mysqli_query($connection, $query);
 print "
         <html>
             <head>
+                <link rel=icon href=favicon2.ico>
                 <title>temperaturelog</title>
             </head>
             <body>

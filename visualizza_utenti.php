@@ -3,12 +3,13 @@
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
 $query = "SELECT *
           FROM utenti
-          WHERE 1";
+          ORDER BY cognome";
 $result1 = mysqli_query($connection, $query);
 
 print "
         <html>
             <head>
+                <link rel=icon href=favicon2.ico>
                 <title>temperaturelog</title>
             </head>
             <body>
@@ -21,8 +22,8 @@ if(mysqli_num_rows($result1) != 0)
     print "
                         <tr>
                             <th>N°</th>
-                            <th>Nome</th>
                             <th>Cognome</th>
+                            <th>Nome</th>
                             <th>Data di nascita</th>
                             <th colspan=2>Azioni</th>
                         </tr>";
@@ -35,8 +36,8 @@ if(mysqli_num_rows($result1) != 0)
         print "
                         <tr>
                             <td>$i</td>
-                            <td>$row[nome]</td>
                             <td>$row[cognome]</td>
+                            <td>$row[nome]</td>
                             <td>$date</td>
                             <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
                             <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>

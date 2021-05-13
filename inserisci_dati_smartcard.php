@@ -13,6 +13,7 @@ $errore = "Tutti i campi segnati con un asterisco (*) sono obbligatori";
 .required {color: #FF0000;}
 </style>
   <head>
+    <link rel=icon href=favicon2.ico>
     <title>temperature log</title>
   </head>
   <body>
@@ -22,7 +23,7 @@ $errore = "Tutti i campi segnati con un asterisco (*) sono obbligatori";
         <h3>Inserisci i dati della smart card<br></h3>
         ID Carta: <input type="text" name="codice" >
         <span class="required">*</span><br><br>
-        <label for="utente">Utente da associare:</label>
+        <label for="utente">Utente associato:</label>
         <select name="idutente" id="scelta_utente" required>
           <option value=""></option>
 

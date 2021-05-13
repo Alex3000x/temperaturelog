@@ -4,21 +4,9 @@ $codice = 0;
 $idutente = 0;
 
 if ($_POST['idutente'] == "" || $_POST['codice'] == "")
-{
-    echo $codice;
-    echo $idutente;
-    echo "nooooo";
     header("Location: inserisci_dati_smartcard.php");
-}
 else
 {
-    $codice = $_POST["codice"];
-    $idutente = $_POST["idutente"];
-    echo $codice;
-    echo $idutente;
-    echo "yeeeee";
-    
-
     $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
     $query = "INSERT
             INTO smartcard (idutente, codice)
@@ -30,6 +18,7 @@ else
     print "
         <html>
             <head>
+                <link rel=icon href=favicon2.ico>
                 <title>temperaturelog</title>
             </head>
             <body>

@@ -15,6 +15,7 @@ mysqli_close($connection);
 print "
         <html>
             <head>
+                <link rel=icon href=favicon2.ico>
                 <title>temperaturelog</title>
             </head>
             <body>

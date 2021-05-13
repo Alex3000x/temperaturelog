@@ -39,6 +39,7 @@ print "
 .required {color: #FF0000;}
 </style>
   <head>
+    <link rel=icon href=favicon2.ico>
     <title>temperaturelog</title>
   </head>
   <body>
@@ -48,10 +49,10 @@ print "
         <h3>Modifica i dati della smart card<br></h3>
         ID Carta: <input type=text name=codice value=$codice required>
         <span class=required>*</span><br><br>
-        <label for=utente>Utente da associare:</label>";
+        <label for=utente>Utente associato:</label>";
 
-$nome = "18";
-$cognome = "chi ride è gay";
+$nome = "";
+$cognome = "";
 
 $query = "SELECT *
           FROM utenti

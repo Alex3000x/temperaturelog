@@ -34,7 +34,11 @@ if(mysqli_num_rows($result) != 0)
 print "
 
 <html>
+<style>
+.required {color: #FF0000;}
+</style>
   <head>
+    <link rel=icon href=favicon2.ico>
     <title>temperaturelog</title>
   </head>
   <body>
@@ -42,9 +46,13 @@ print "
     <h1>GESTIONE UTENTI</h1>
     <form action=modifica_utente.php?id=$idutente method=POST><br><br>
             <h3>Modifica i dati dell'utente<br></h3>
-			Nome: <input type=text name=nome value=$nome><br><br>
-			Cognome: <input type=text name=cognome value=$cognome><br><br>
-      Data di nascita: <input type=date name=datanascita value=$datanascita><br><br>
+			Nome: <input type=text name=nome value=$nome required>
+      <span class=required>*</span><br><br>
+			Cognome: <input type=text name=cognome value=$cognome required>
+      <span class=required>*</span><br><br>
+      Data di nascita: <input type=date name=datanascita value=$datanascita required>
+      <span class=required>*</span><br><br>
+      <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>
 			<input type=submit value=Applica&nbsp;modifiche>
 		</form>
   </center>
