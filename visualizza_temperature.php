@@ -9,12 +9,12 @@ $result1 = mysqli_query($connection, $query);
 print "
         <html>
             <head>
-                <link rel=icon href=favicon2.ico>
+                <link rel=icon href=favicon.ico>
                 <title>temperaturelog</title>
             </head>
             <body>
                 <center>
-                    <h1>GESTIONE UTENTI</h1>
+                    <h1>UTENTI</h1>
                     <table border>
                     <p>NON C'È NIENTE!</p>";
 /*

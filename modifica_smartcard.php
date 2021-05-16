@@ -1,3 +1,23 @@
+<html>
+    <head>
+        <link rel=icon href=favicon.ico>
+        <link rel = "stylesheet" href="allstyles.css"/>
+        <title>temperaturelog</title>
+    </head>
+    <body>
+      <div class="title">
+        <img class="logo1" src=./immagini/logo1.png alt=T>
+        <h1>emperature</h1>
+        <img class="logo2" src=./immagini/logo2.png alt=T>
+        <h1 class="og">og</h1>
+      </div>
+      <h1>SMART CARD</h1><br><br>
+      <h3>Modifiche apportate correttamente alla smart card</h3>
+      <a class="button" href="index.html">Torna alla home</a>
+      <a class="button" href="gestione_smartcard.html">Torna alle smart card</a>
+    </body>
+</html>
+
 <?php
 
 session_start();
@@ -36,22 +56,6 @@ if(strlen($idutente) != 0)
 }
 
 mysqli_close($connection);
-
-print "
-        <html>
-            <head>
-                <link rel=icon href=favicon2.ico>
-                <title>temperaturelog</title>
-            </head>
-            <body>
-                <center>
-                <h1>GESTIONE SMART CARD</h1><br><br>
-                <h3>Modifiche apportate correttamente alla smart card</h3>
-                <a href=index.html>Torna alla home</a>
-                <a href=gestione_smartcard.html>Torna alla gestione smart card</a>
-                </center>
-            </body>
-        </html>";
 
 session_unset();
 session_destroy();

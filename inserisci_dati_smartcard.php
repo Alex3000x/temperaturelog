@@ -9,23 +9,28 @@ $errore = "Tutti i campi segnati con un asterisco (*) sono obbligatori";
 ?>
 
 <html>
-<style>
-.required {color: #FF0000;}
-</style>
   <head>
-    <link rel=icon href=favicon2.ico>
-    <title>temperature log</title>
+    <link rel=icon href=favicon.ico>
+    <link rel = "stylesheet" href="allstyles.css"/>
+    <title>temperaturelog</title>
   </head>
   <body>
-    <center>
-      <h1>GESTIONE SMART CARD</h1>
-      <form id="form" name="myForm" action="inserisci_smartcard.php" onsubmit=validateForm() method="POST"><br><br>
+      <div class="title">
+        <img class="logo1" src=./immagini/logo1.png alt=T>
+        <h1>emperature</h1>
+        <img class="logo2" src=./immagini/logo2.png alt=T>
+        <h1 class="og">og</h1>
+      </div>
+      <h1>SMART CARD</h1>
+      <form class="centro" action="inserisci_smartcard.php" method="POST"><br><br>
         <h3>Inserisci i dati della smart card<br></h3>
-        ID Carta: <input type="text" name="codice" >
-        <span class="required">*</span><br><br>
-        <label for="utente">Utente associato:</label>
-        <select name="idutente" id="scelta_utente" required>
-          <option value=""></option>
+        <fieldset>
+          <label for="code">ID Carta:</label>
+          <input type="text" name="codice" required>
+          <span class="required">*</span><br><br>
+          <label for="utente">Utente associato:</label>
+          <select name="idutente" id="scelta_utente" required>
+            <option value=""></option>
 
 <?php
 $nome = "";
@@ -39,39 +44,18 @@ if(mysqli_num_rows($result1) != 0)
       $nome = $row['nome'];
       $cognome = $row['cognome'];
       print "    
-          <option value=$idutente>$nome $cognome</option>";
+            <option value=$idutente>$cognome $nome</option>";
     }
 }
 ?>
 
-        </select>
-        <span class="required">*<br><br></span>
-        <span class="required" id="error">*&hairsp;campi obbligatori</span><br><br>
-        <input type="submit" value="Inserisci&nbsp;smart&nbsp;card" onclick=anotherValidation()>
+          </select>
+          <span class="required">*<br><br></span>
+          <span class="required" id="error">*&hairsp;campi obbligatori</span>
+        </fieldset><br><br>
+        <a href="visualizza_smartcard.php" class="button">Torna Indietro</a>
+        <input class="button" type="submit" value="Aggiungi&nbsp;smart&nbsp;card">
       </form>
-  </center>
+  
 	</body>
 </html>
-
-<script>
-document.getElementById("error")style.display = "none";
-
-function anotherValidation() {
-  document.getElementById('form').action = "inserisci_dati_smartcard.php";
-   alert("Submit button clicked!");
-   return true;
-}
-
-function validateForm() {
-  var x = document.forms["myForm"]["idutente"].value;
-  var y = document.forms["myForm"]["codice"].value;
-  if (x == "" || y == "") {
-    return false;
-    document.getElementById("error")style.display = "block";
-    window.location.replace('inserisci_dati_smartcard.php');
-  }
-  else{
-    document.getElementById("error")style.display = "none";
-  }
-}
-</script>

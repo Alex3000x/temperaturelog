@@ -1,19 +1,40 @@
 <html>
-  <head>
-    <link rel=icon href=favicon2.ico>
-    <title>temperaturelog</title>
-  </head>
-  <body>
-    <center>
-      <h1>
-        HOME
-      </h1>
-      <a href=gestione_utenti.html>Utenti</a>
-      <b> </b>
-      <a href=gestione_smartcard.html>Smart Card</a>
-      <b> </b>
-      <a href=visualizza_temperature.html>Temperature</a>
-      <br><br><br>
-  </center>
-	</body>
+
+<head>
+  <link rel=icon href=favicon.ico>
+  <link rel="stylesheet" href="allstyles.css" />
+  <title>temperaturelog</title>
+</head>
+
+<body>
+  <div class="title">
+    <img class="logo1" src=./immagini/logo1.png alt=T>
+    <h1>emperature</h1>
+    <img class="logo2" src=./immagini/logo2.png alt=T>
+    <h1 class="og">og</h1>
+  </div>
+  <h1>HOME</h1>
+  <a class="button" href=gestione_utenti.html>Utenti</a>
+  <b> </b>
+  <a class="button" href=gestione_smartcard.html>Smart Card</a>
+  <b> </b>
+  <a class="button" href=visualizza_temperature.html>Temperature</a>
+  <br><br><br>
+</body>
+
 </html>
+
+<script>
+  function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+  $(document).on("keydown", disableF5);
+
+  // simply visual, let's you know when the correct iframe is selected
+  $(window).on("focus", function (e) {
+    $("html, body").css({ background: "#FFF", color: "#000" })
+      .find("h2").html("THIS BOX NOW HAS FOCUS<br />F5 should not work.");
+  })
+    .on("blur", function (e) {
+      $("html, body").css({ background: "", color: "" })
+        .find("h2").html("CLICK HERE TO GIVE THIS BOX FOCUS BEFORE PRESSING F5");
+    });
+</script>

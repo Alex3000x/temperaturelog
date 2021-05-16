@@ -1,3 +1,36 @@
+<html>
+    <style>
+        table, th, td {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 20px;
+            border: 1px solid #a8afb7;
+            border-collapse: collapse;
+        }
+    </style>
+    <head>
+        <link rel="icon" href="favicon.ico">
+        <link rel = "stylesheet" href="allstyles.css"/>
+        <title>temperaturelog</title>
+    </head>
+    <body>
+        <center>
+            <div class="title">
+                <img class="logo1" src=./immagini/logo1.png alt=T>
+                <h1>emperature</h1>
+                <img class="logo2" src=./immagini/logo2.png alt=T>
+                <h1 class="og">og</h1>
+            </div>
+            <h1>UTENTI</h1>
+            <table class="centro">
+            <tr>
+                <th>N°</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data di nascita</th>
+                <th colspan=2>Azioni</th>
+            </tr>
+
 <?php
 
 $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
@@ -6,27 +39,8 @@ $query = "SELECT *
           ORDER BY cognome";
 $result1 = mysqli_query($connection, $query);
 
-print "
-        <html>
-            <head>
-                <link rel=icon href=favicon2.ico>
-                <title>temperaturelog</title>
-            </head>
-            <body>
-                <center>
-                    <h1>GESTIONE UTENTI</h1>
-                    <table border>";
-
 if(mysqli_num_rows($result1) != 0)
 {
-    print "
-                        <tr>
-                            <th>N°</th>
-                            <th>Cognome</th>
-                            <th>Nome</th>
-                            <th>Data di nascita</th>
-                            <th colspan=2>Azioni</th>
-                        </tr>";
     $i = 1;
     while ($row = mysqli_fetch_array($result1))
     {
@@ -51,14 +65,10 @@ mysqli_close($connection);
 ?>
 
                     </table><br>
-                    <form action=inserisci_dati_utente.html>
-                        <input type=submit value=Inserisci&nbsp;utente>
+                    <form class="centro" action=inserisci_dati_utente.html>
+                        <a class="button" href=gestione_utenti.html>Torna indietro</a>
+                        <input class="button" type=submit value=Aggiungi&nbsp;utente>
                     </form>
                 </center>
             </body>
-            <footer>
-                <center>
-                    <a href=index.html>Home</a></td>
-                </center>
-            </footer>
         </html>

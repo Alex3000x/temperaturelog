@@ -3,23 +3,34 @@
 .required {color: #FF0000;}
 </style>
   <head>
-    <link rel=icon href=favicon2.ico>
-    <title>temperature log</title>
+    <link rel=icon href=favicon.ico>
+    <link rel = "stylesheet" href="allstyles.css"/>
+    <title>temperaturelog</title>
   </head>
   <body>
-    <center>
-      <h1>GESTIONE UTENTI</h1>
-      <form action="inserisci_utente.php" method="POST"><br><br>
+    <div class="title">
+      <img class="logo1" src=./immagini/logo1.png alt=T>
+      <h1>emperature</h1>
+      <img class="logo2" src=./immagini/logo2.png alt=T>
+      <h1 class="og">og</h1>
+    </div>
+      <h1>UTENTI</h1>
+      <form class="centro" action="inserisci_utente.php" method="POST"><br><br>
         <h3>Inserisci i dati dell'utente<br></h3>
-        Nome: <input type="text" name="nome" required>
-        <span class=required>*</span><br><br>
-        Cognome: <input type="text" name="cognome" required>
-        <span class=required>*</span><br><br>
-        Data di nascita: <input type="date" name="datanascita" required>
-        <span class=required>*</span><br><br>
-        <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>
-        <input type="submit" value="Inserisci&nbsp;utente">
+        <fieldset>
+          <label for="fname">Nome:</label>
+          <input type="text" name="nome" required>
+          <span class=required>*</span><br><br>
+          <label for="lname">Cognome:</label>
+          <input type="text" name="cognome" required>
+          <span class=required>*</span><br><br>
+          <label for="date">Data di nascita:</label>
+          <input type="date" name="datanascita" required>
+          <span class=required>*</span><br><br>
+          <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>
+        </fieldset>
+        <a href="visualizza_utenti.php" class="button">Torna Indietro</a>
+        <input class="button" type="submit" value="Aggiungi&nbsp;utente">
       </form>
-  </center>
 	</body>
 </html>

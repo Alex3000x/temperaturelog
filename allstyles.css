@@ -1,0 +1,126 @@
+body {
+    background-color: #0d1117;
+    background-attachment: fixed;
+    background-position: center center;
+    color: #c3c3c3;
+    margin: auto;
+    text-align: center;
+    overflow-x: hidden;
+    font: 16px Arial, Helvetica, sans-serif;
+}
+
+body * {
+    -webkit-tap-highlight-color: transparent; /*Rimuove lo sfondo celeste dagli elementi cliccati*/
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+fieldset {
+    width: 0px;
+    border: none;
+    width: 175px;
+    margin: auto;
+    text-align: left;
+}
+
+table, th, td {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    border: 1px solid #a8afb7;
+    border-collapse: collapse;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+img.logo1 {
+    width: 64px;
+    position: relative;
+    top: 4px;
+    left: 16px;
+}
+
+img.logo2 {
+    width: 32px;
+    position: relative;
+    top: 4px;
+    left: -4px;
+}
+
+h1.og {
+    position: relative;
+    right: 10px;
+}
+
+@font-face {
+    font-family: "titleFont";
+    src: url(font/sansation_light.ttf);
+}
+
+div.title {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 1px;
+    background-color: #161b22;
+    border-bottom: solid thin #30363d;
+    font-family: titleFont;
+    font-size: 24px;
+}
+
+div.title h1{
+    display: inline-block;
+    padding-top: 1px;
+}
+
+.centro {padding: 70px 0;}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    background-color: #21262d; 
+    padding: 10px 0px;
+    text-decoration: none;
+}
+
+.button { 
+    background-color: #21262d; 
+    width: 10em;
+    padding: 10;
+    color: #a8afb7;
+    text-shadow: 1px 1px 1px #000;
+    font: 16px Arial, Helvetica, sans-serif;
+    border: solid thin #30363d;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.required {color: #FF0000;}
+
+@media screen and (orientation: portrait) {
+
+    #page_render {
+        margin-top: 9vh;
+        background-image: url("../res/bg_2_1920x1080.png");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        min-height: 91vh;
+        width: 100vw;
+    }
+
+    #page_render_offline {
+        /*margin-top: 9vh;*/
+        background-image: url("../res/bg_2_1920x1080.png");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        width: 100vw;
+    }
+
+}

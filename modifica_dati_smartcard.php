@@ -1,3 +1,18 @@
+<html>
+  <head>
+    <link rel=icon href=favicon.ico>
+    <link rel = "stylesheet" href="allstyles.css"/>
+    <title>temperaturelog</title>
+  </head>
+  <body>
+    <div class="title">
+      <img class="logo1" src=./immagini/logo1.png alt=T>
+      <h1>emperature</h1>
+      <img class="logo2" src=./immagini/logo2.png alt=T>
+      <h1 class="og">og</h1>
+    </div>
+    <h1>SMART CARD</h1>
+
 <?php
 
 session_start();
@@ -32,22 +47,13 @@ if(mysqli_num_rows($result1) != 0)
     }
 }
 $iduser = $idutente;
-print "
 
-<html>
-<style>
-.required {color: #FF0000;}
-</style>
-  <head>
-    <link rel=icon href=favicon2.ico>
-    <title>temperaturelog</title>
-  </head>
-  <body>
-    <center>
-    <h1>GESTIONE SMART CARD</h1>
-    <form action=modifica_smartcard.php?id=$idsmartcard method=POST><br><br>
+print "
+    <form class=centro action=modifica_smartcard.php?id=$idsmartcard method=POST><br><br>
+      <fieldset>
         <h3>Modifica i dati della smart card<br></h3>
-        ID Carta: <input type=text name=codice value=$codice required>
+        <label for=code>ID Carta:</label>
+        <input type=text name=codice value=$codice required>
         <span class=required>*</span><br><br>
         <label for=utente>Utente associato:</label>";
 
@@ -68,7 +74,7 @@ if(mysqli_num_rows($result2) != 0)
       $nome = $row['nome'];
       $cognome = $row['cognome'];
       print "    
-          <option value=$idutente selected>$nome $cognome</option>";
+          <option value=$idutente selected>$cognome $nome</option>";
     }
 }
 
@@ -87,18 +93,16 @@ if(mysqli_num_rows($result3) != 0)
           <option value=$idutente>$nome $cognome</option>";
     }
 }
-
-print "
-
-        </select>
-        <span class=required>*<br><br></span>
-        <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>
-        <input type=submit value=Applica&nbsp;modifiche>
-      </form>
-  </center>
-	</body>
-</html>";
-
 mysqli_close($connection);
 session_destroy();
 ?>
+
+        </select>
+        <span class="required">*<br><br></span>
+        <span class="required" id="error">*&hairsp;campi obbligatori</span><br><br>
+      </fieldset>  
+      <a class="button" href="visualizza_smartcard.php" class="button">Torna Indietro</a>
+      <input class="button" type="submit" value="Applica&nbsp;modifiche">
+    </form>
+	</body>
+</html>
