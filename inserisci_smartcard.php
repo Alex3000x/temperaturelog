@@ -1,18 +1,3 @@
-<?php
-
-$codice = $_POST["codice"];
-$idutente = $_POST["idutente"];
-
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
-$query = "INSERT
-            INTO smartcard (idutente, codice)
-            VALUES ('$idutente','$codice')";
-
-mysqli_query($connection,$query);
-mysqli_close($connection);
-
-?>
-
 <html>
     <head>
         <link rel="icon" href="favicon.ico">
@@ -27,8 +12,35 @@ mysqli_close($connection);
             <h1 class="og">og</h1>
         </div>
         <h1>SMART CARD</h1><br><br>
-        <h3>Smart card inserita correttamente nel database</h3>
-        <a class="button" href="index.html">Torna alla home</a>
+        
+        
+<?php
+
+$codice = $_POST["codice"];
+$idutente = $_POST["idutente"];
+
+$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$query = "SELECT *
+          FROM smartcard
+          WHERE codice = '$codice'";
+$result = mysqli_query($connection,$query);
+$data = mysqli_fetch_array($result, MYSQLI_NUM);
+if($data[0] > 1) {
+    print "
+        <h3>Errore di inserimento! ID smart card già registrato nel database</h3>";
+}
+else {
+    $query = "INSERT
+                INTO smartcard (idutente, codice)
+                VALUES ('$idutente','$codice')";
+    mysqli_query($connection,$query);
+    print "
+        <h3>Smart card inserita correttamente nel database</h3>";
+}
+mysqli_close($connection);
+?>
+
+<a class="button" href="index.html">Torna alla home</a>
         <a class="button" href="gestione_smartcard.html">Torna alle smart card</a>
     </body>
 </html>
