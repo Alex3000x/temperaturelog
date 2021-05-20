@@ -2,28 +2,43 @@
 <?php
 
 $database = "temperaturelog"; // creare db myarduino
-$db_table = 'smartcard'; // creare tabella card nel DB myarduino e la chiave cardid di tipo text 
+//$db_table = 'smartcard'; // creare tabella card nel DB myarduino e la chiave cardid di tipo text 
 $hostname = "localhost";
 $user = "root"; //utente che puo' accedere al db myarduino
 $password = "";
 
 
-mysql_connect($hostname, $user, $password)
-or die('Could not connect: ' . mysql_error());
+$connection = mysqli_connect($hostname, $user, $password, $database) or die('Could not connect: ' . mysqli_error());
 
-mysql_select_db($database)
-or die ('Could not select database ' . mysql_error());
+//mysqli_select_db($database) or die ('Could not select database ' . mysqli_error());
 
-$query = mysql_query("SELECT codice FROM ".$db_table);
+$query = "SELECT codice 
+          FROM smartcard";
 
-$trovato=0;
-while((list($cardid) = mysql_fetch_row($query)))
-{
-//  var_dump($cardid); // DEBUG
-if ($_GET['smartcard']==$cardid) $trovato=1;
+$result = mysqli_query($connection, $query);
+
+$trovato = 0;
+
+print "Carte nel database:";
+
+if(mysqli_num_rows($result) != 0) {
+    while((list($cardid) = mysqli_fetch_array($result))) {
+        echo $cardid;
+        echo "\n";
+        if ($_GET['codice'] == $cardid) {
+            $trovato = 1;
+        }
+
+        if ($trovato == 0) {
+            echo " NOT AUTHORIZED ";
+        } //messaggio di risposta che nel codice di arduino è citato in if(line.indexOf("SI") > 0)
+        else {
+            
+            break 1;
+        }
+    }
 }
 
-if ($trovato !=0 ) echo "SI"; // messaggio di risposta che nel codice di arduino è citato in if(line.indexOf("SI") > 0)
-else echo "NIENTE DA FARE";
+
 
 ?>

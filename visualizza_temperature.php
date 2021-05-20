@@ -54,8 +54,8 @@ if(mysqli_num_rows($result1) != 0)
         $result2 = mysqli_query($connection, $query);
         if(mysqli_num_rows($result2) != 0)
         {
-            while ($row = mysqli_fetch_array($result2))
-            {
+            $row = mysqli_fetch_array($result2);
+            if($row[0] > 1) {
                 $nome = $row['nome'];
                 $cognome = $row['cognome'];
             
