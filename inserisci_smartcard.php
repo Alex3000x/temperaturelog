@@ -16,6 +16,8 @@
         
 <?php
 
+error_reporting(0);
+
 $codice = $_POST["codice"];
 $idutente = $_POST["idutente"];
 
