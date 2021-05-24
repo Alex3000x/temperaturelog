@@ -58,7 +58,7 @@ print "
         <input type=text name=cognome value=$cognome required>
         <span class=required>*</span><br><br>
         <label for=date>Data di nascita:</label>
-        Data di nascita: <input type=date name=datanascita value=$datanascita required>";
+        <input type=date name=datanascita value=$datanascita required>";
 mysqli_close($connection);
 session_destroy();
 ?>        
