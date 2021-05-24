@@ -64,7 +64,7 @@ if(mysqli_num_rows($result1) != 0)
             }
         }
         print "
-                    <td>$temperatura</td>
+                    <td>$temperatura °C</td>
                 </tr>";
         $i++;
     }
