@@ -40,32 +40,35 @@ if(mysqli_num_rows($result1) != 0)
     $i = 1;
     while ($row = mysqli_fetch_array($result1))
     {
-        $temperatura = $row['temperatura'];
-        print "
-                <tr>
-                    <td>$i</td>";
+        $idtemperatura = $row['idtemperatura'];
+        
         
         $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
         $query = "SELECT user.idutente, user.nome, user.cognome, temp.idtemperatura, temp.temperatura
                   FROM utenti AS user, temperature AS temp
                   WHERE temp.idutente = user.idutente
-                  AND temp.temperatura = '$temperatura'
+                  AND temp.idtemperatura = '$idtemperatura'
                   ORDER BY temp.temperatura";
         $result2 = mysqli_query($connection, $query);
         if(mysqli_num_rows($result2) != 0)
         {
-            $row = mysqli_fetch_array($result2);
-            if($row[0] > 1) {
+            while ($row = mysqli_fetch_array($result2))
+            {
+                print "
+                <tr>
+                    <td>$i</td>";
+
                 $nome = $row['nome'];
                 $cognome = $row['cognome'];
-            
+                
                 print "
                     <td>$row[cognome] $row[nome]</td>";
+        
+                print "
+                    <td>$row[temperatura] °C</td>
+                </tr>";
             }
         }
-        print "
-                    <td>$temperatura °C</td>
-                </tr>";
         $i++;
     }
 }

@@ -46,14 +46,7 @@ CREATE TABLE `utenti` (
   `datanascita` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dump dei dati per la tabella `utenti`
---
-
-INSERT INTO `utenti` (`idutente`, `nome`, `cognome`, `datanascita`) VALUES
-(2, 'Alessio', 'Gurgoglione', '2021-04-26'),
-(9, 'Daniela', 'Asciugatrice', '2004-02-03'),
-(14, 'sbura', 'caca', '2004-01-06');
+-- --------------------------------------------------------
 
 --
 -- Indici per le tabelle scaricate
