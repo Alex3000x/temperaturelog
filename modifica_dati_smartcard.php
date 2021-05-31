@@ -15,7 +15,7 @@
 
 <?php
 
-session_start();
+include("database.php");
 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
   $url = "https://";   
@@ -32,7 +32,7 @@ $idsmartcard = $params['id'];
 $codice = "";
 $idutente = "";
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
           FROM smartcard
           WHERE idsmartcard = $idsmartcard";

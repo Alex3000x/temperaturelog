@@ -16,12 +16,14 @@
         
 <?php
 
+include("database.php");
+
 error_reporting(0);
 
 $codice = $_POST["codice"];
 $idutente = $_POST["idutente"];
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "SELECT *
           FROM smartcard
           WHERE codice = '$codice'";

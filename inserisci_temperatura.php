@@ -1,18 +1,6 @@
 <?php
 
-/*$idutene = 29;
-$temperatura = 33.3;
-
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
-
-
-
-$query = "UPDATE temperature
-            SET temperatura = '$cognome'
-            WHERE idutente = '$idutente'";
-          
-mysqli_query($connection,$query);
-mysqli_close($connection);*/
+include("database.php");
 
 $temperatura = $_GET['temperatura'];
 $codice = $_GET['codice'];
@@ -20,7 +8,7 @@ $codice = $_GET['codice'];
 print "temperatura = $temperatura\n";
 print "codice = $codice\n";
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "SELECT idutente
           FROM smartcard
           WHERE codice = '$codice'";

@@ -1,5 +1,8 @@
 <?php
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+
+include("database.php");
+
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
           FROM utenti
           WHERE 1";

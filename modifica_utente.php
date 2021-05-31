@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+include("database.php");
 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
   $url = "https://";   
@@ -18,7 +18,7 @@ $cognome = $_POST["cognome"];
 $nome = $_POST["nome"];
 $datanascita = $_POST["datanascita"];
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 
 if(strlen($cognome) != 0)
 {

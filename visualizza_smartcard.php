@@ -32,7 +32,9 @@
                 </tr>
 <?php
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+include("database.php");
+
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
           FROM smartcard";
 $result1 = mysqli_query($connection, $query);
@@ -45,7 +47,7 @@ if(mysqli_num_rows($result1) != 0)
                 <tr>
                     <td>$i</td>
                     <td>$row[codice]</td>";
-        $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+        $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
         $query = "SELECT user.idutente, user.nome, user.cognome, smart.idsmartcard, smart.codice
                   FROM utenti AS user, smartcard AS smart
                   WHERE smart.idutente = user.idutente

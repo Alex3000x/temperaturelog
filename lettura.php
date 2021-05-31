@@ -1,14 +1,9 @@
   
 <?php
 
-$database = "temperaturelog"; // creare db myarduino
-//$db_table = 'smartcard'; // creare tabella card nel DB myarduino e la chiave cardid di tipo text 
-$hostname = "localhost";
-$user = "root"; //utente che puo' accedere al db myarduino
-$password = "";
+include("database.php");
 
-
-$connection = mysqli_connect($hostname, $user, $password, $database) or die('Could not connect: ' . mysqli_error());
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die('Could not connect: ' . mysqli_error());
 
 //mysqli_select_db($database) or die ('Could not select database ' . mysqli_error());
 

@@ -1,10 +1,12 @@
 <?php
 
+include("database.php");
+
 $nome = $_POST["nome"];
 $cognome = $_POST["cognome"];
 $datanascita = $_POST["datanascita"];
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "INSERT
           INTO utenti (nome, cognome, datanascita)
           VALUES ('$nome','$cognome','$datanascita')";

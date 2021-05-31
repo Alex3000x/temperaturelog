@@ -30,7 +30,9 @@
                 </tr>
 <?php
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+include("database.php");
+
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
           FROM temperature";
 $result1 = mysqli_query($connection, $query);
@@ -43,7 +45,7 @@ if(mysqli_num_rows($result1) != 0)
         $idtemperatura = $row['idtemperatura'];
         
         
-        $connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non eseguita");
+        $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
         $query = "SELECT user.idutente, user.nome, user.cognome, temp.idtemperatura, temp.temperatura
                   FROM utenti AS user, temperature AS temp
                   WHERE temp.idutente = user.idutente

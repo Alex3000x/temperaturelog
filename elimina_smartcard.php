@@ -1,5 +1,7 @@
 <?php
 
+include("database.php");
+
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
   $url = "https://";   
 else
@@ -13,7 +15,7 @@ parse_str($url_components['query'], $params);
 
 $idsmartcard = $params["id"];
 
-$connection = mysqli_connect("localhost","root","","temperaturelog") or die("Connessione non riuscita");
+$connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "DELETE
           FROM smartcard
           WHERE idsmartcard = '$idsmartcard'";
