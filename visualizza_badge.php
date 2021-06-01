@@ -79,7 +79,7 @@ mysqli_close($connection);
 
             </table><br>
             <form class="centro" action=inserisci_dati_badge.php>
-                <a class="button" href=gestione_badge.html>Torna indietro</a></td>
+                <a class="button" href=index.html>Torna alla home</a></td>
                 <input class="button" type=submit value=Aggiungi&nbsp;badge>
             </form>
         </center>

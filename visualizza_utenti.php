@@ -68,7 +68,7 @@ mysqli_close($connection);
 
                     </table><br>
                     <form class="centro" action=inserisci_dati_utente.html>
-                        <a class="button" href=gestione_utenti.html>Torna indietro</a>
+                        <a class="button" href=index.html>Torna alla home</a>
                         <input class="button" type=submit value=Aggiungi&nbsp;utente>
                     </form>
                 </center>

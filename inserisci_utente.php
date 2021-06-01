@@ -30,8 +30,7 @@ mysqli_close($connection);
         </div>         
         <h1>UTENTI</h1><br><br>
         <h3>Utente inserito correttamente nel database</h3>
-        <a class="button" href="index.html">Torna alla home</a>
-        <a class="button" href="gestione_utenti.html">Torna agli utenti</a>
+        <a class="button" href="visualizza_utenti.php">Torna agli utenti</a>
     </body>
 </html>
 

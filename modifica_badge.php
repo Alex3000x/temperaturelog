@@ -68,8 +68,6 @@ else {
 mysqli_close($connection);
 
 ?>
-
-      <a class="button" href="index.html">Torna alla home</a>
-      <a class="button" href="gestione_badge.html">Torna ai badge</a>
+      <a class="button" href="visualizza_badge.php">Torna ai badge</a>
     </body>
 </html>
