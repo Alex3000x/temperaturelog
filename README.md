@@ -10,11 +10,11 @@ Proprio per questo appena verrà aperto il sito, rimanderà direttamente a una p
 
 <br><br><br>
 <h3><b>Descrizione delle componenti</b></h3>
-- elimina_smartcard.php: elimina dal database la smart card selezionata precedentemente;
+- elimina_badge.php: elimina dal database la smart card selezionata precedentemente;
 <br><br>
 - elimina_utente.php: elimina dal database l'utente selezionato precedentemente;
 <br><br>
-- gestione_smartcard.html: pagina per la gestione delle smart card;
+- gestione_badge.html: pagina per la gestione delle smart card;
 <br><br>
 - gestione_temperature.html: pagina per la gestione delle temperature;
 <br><br>
@@ -22,25 +22,25 @@ Proprio per questo appena verrà aperto il sito, rimanderà direttamente a una p
 <br><br>
 - index.html: pagina iniziale dove poter scegliere cosa gestire tra utenti, smart card e temperature;
 <br><br>
-- inserisci_dati_smartcard.php: pagina dedicata all'inserimento dei dati di una smart card da aggiungere al database;
+- inserisci_dati_badge.php: pagina dedicata all'inserimento dei dati di una smart card da aggiungere al database;
 <br><br>
 - inserisci_dati_utente.html: pagina dedicata all'inserimento dei dati di un utente da aggiungere al database;
 <br><br>
-- inserisci_smartcard.php: aggiunge nel database una nuova smart card, avente i dati inseriti precedentemente in inserisci_dati_smartcard.php;
+- inserisci_badge.php: aggiunge nel database una nuova smart card, avente i dati inseriti precedentemente in inserisci_dati_badge.php;
 <br><br>
 - inserisci_utente.php: aggiunge nel database un nuovo utente, avente i dati inseriti precedentemente in inserisci_dati_utente.php;
 <br><br>
 - lettura.php: permette di ottenere le temperature dal dispositivo di misurazione remoto;
 <br><br>
-- modifica_dati_smartcard.php: pagina dedicata all'inserimento di nuovi dati di una smart card da aggiornare all'interno del database;
+- modifica_dati_badge.php: pagina dedicata all'inserimento di nuovi dati di una smart card da aggiornare all'interno del database;
 <br><br>
 - modifica_dati_utente.php: pagina dedicata all'inserimento di nuovi dati di un utente da aggiornare all'interno del database;
 <br><br>
-- modifica_smartcard.php: modifica nel database i dati della smart card selezionata con i  nuovi dati inseriti precedentemente in modifica_dati_smartcard.php;
+- modifica_badge.php: modifica nel database i dati della smart card selezionata con i  nuovi dati inseriti precedentemente in modifica_dati_badge.php;
 <br><br>
 - modifica_utente.php: modifica nel database i dati dell' utente selezionato con i  nuovi dati inseriti precedentemente in modifica_dati_utente.php;
 <br><br>
-- visualizza_smartcard.php: pagina che mostra l'elenco di tutte le smart card registrate nel database;
+- visualizza_badge.php: pagina che mostra l'elenco di tutte le smart card registrate nel database;
 <br><br>
 - visualizza_temperature.php: pagina che mostra l'elenco di tutte le temperature registrate nel database;
 <br><br>

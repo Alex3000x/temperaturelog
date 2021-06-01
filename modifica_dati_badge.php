@@ -49,7 +49,7 @@ if(mysqli_num_rows($result1) != 0)
 $iduser = $idutente;
 
 print "
-    <form class=centro action=modifica_smartcard.php?id=$idbadge method=POST><br><br>
+    <form class=centro action=modifica_badge.php?id=$idbadge method=POST><br><br>
       <fieldset>
         <h3>Modifica i dati del badge<br></h3>
         <label for=code>ID badge:</label>
@@ -101,7 +101,7 @@ mysqli_close($connection);
         <span class="required">*<br><br></span>
         <span class="required" id="error">*&hairsp;campi obbligatori</span><br><br>
       </fieldset>  
-      <a class="button" href="visualizza_smartcard.php" class="button">Torna Indietro</a>
+      <a class="button" href="visualizza_badge.php" class="button">Torna Indietro</a>
       <input class="button" type="submit" value="Applica&nbsp;modifiche">
     </form>
 	</body>

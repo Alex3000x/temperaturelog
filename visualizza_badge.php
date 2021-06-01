@@ -63,8 +63,8 @@ if(mysqli_num_rows($result1) != 0)
             
                 print "
                     <td>$row[cognome] $row[nome]</td>
-                    <td><a href=modifica_dati_smartcard.php?id=$row[idbadge]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                    <td><a href=elimina_smartcard.php?id=$row[idbadge]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                    <td><a href=modifica_dati_badge.php?id=$row[idbadge]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                    <td><a href=elimina_badge.php?id=$row[idbadge]><img src=./immagini/elimina.png alt=Elimina></a></td>
                 </tr>";
             }
         }
@@ -78,8 +78,8 @@ mysqli_close($connection);
 ?>
 
             </table><br>
-            <form class="centro" action=inserisci_dati_smartcard.php>
-                <a class="button" href=gestione_smartcard.html>Torna indietro</a></td>
+            <form class="centro" action=inserisci_dati_badge.php>
+                <a class="button" href=gestione_badge.html>Torna indietro</a></td>
                 <input class="button" type=submit value=Aggiungi&nbsp;badge>
             </form>
         </center>
