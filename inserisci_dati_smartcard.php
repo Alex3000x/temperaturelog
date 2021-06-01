@@ -24,11 +24,11 @@ $errore = "Tutti i campi segnati con un asterisco (*) sono obbligatori";
         <img class="logo2" src=./immagini/logo2.png alt=T>
         <h1 class="og">og</h1>
       </div>
-      <h1>SMART CARD</h1>
+      <h1>BADGE</h1>
       <form class="centro" action="inserisci_smartcard.php" method="POST"><br><br>
-        <h3>Inserisci i dati della smart card<br></h3>
+        <h3>Inserisci i dati del badge<br></h3>
         <fieldset>
-          <label for="code">ID Carta:</label>
+          <label for="code">ID badge:</label>
           <input type="text" name="codice" required>
           <span class="required">*</span><br><br>
           <label for="utente">Utente associato:</label>
@@ -57,7 +57,7 @@ if(mysqli_num_rows($result1) != 0)
           <span class="required" id="error">*&hairsp;campi obbligatori</span>
         </fieldset><br><br>
         <a href="visualizza_smartcard.php" class="button">Torna Indietro</a>
-        <input class="button" type="submit" value="Aggiungi&nbsp;smart&nbsp;card">
+        <input class="button" type="submit" value="Aggiungi&nbsp;badge">
       </form>
   
 	</body>

@@ -11,7 +11,7 @@
         <img class="logo2" src=./immagini/logo2.png alt=T>
         <h1 class="og">og</h1>
       </div>
-      <h1>SMART CARD</h1><br><br>  
+      <h1>BADGE</h1><br><br>  
 
 <?php
 
@@ -42,7 +42,7 @@ $result = mysqli_query($connection,$query);
 $data = mysqli_fetch_array($result, MYSQLI_NUM);
 if($data[0] > 1) {
     print "
-        <h3>Errore di aggiornamento! ID smart card già registrato nel database</h3>";
+        <h3>Errore di aggiornamento! ID badge già registrato nel database</h3>";
 }
 else {
 
@@ -62,7 +62,7 @@ else {
     mysqli_query($connection,$query);
   }
   print "
-      <h3>Modifiche apportate correttamente alla smart card</h3>";
+      <h3>Modifiche apportate correttamente ai dati del badge</h3>";
 }
 
 mysqli_close($connection);
@@ -70,6 +70,6 @@ mysqli_close($connection);
 ?>
 
       <a class="button" href="index.html">Torna alla home</a>
-      <a class="button" href="gestione_smartcard.html">Torna alle smart card</a>
+      <a class="button" href="gestione_smartcard.html">Torna ai badge</a>
     </body>
 </html>

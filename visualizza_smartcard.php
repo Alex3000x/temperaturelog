@@ -21,12 +21,12 @@
             <img class="logo2" src=./immagini/logo2.png alt=T>
             <h1 class="og">og</h1>
         </div>
-        <h1>SMART CARD</h1>
+        <h1>BADGE</h1>
         <center>
             <table class="centro">
                 <tr>
                     <th>N°</th>
-                    <th>ID Carta</th>
+                    <th>ID badge</th>
                     <th>Utente associato</th>
                     <th colspan=2>Azioni</th>
                 </tr>
@@ -63,8 +63,8 @@ if(mysqli_num_rows($result1) != 0)
             
                 print "
                     <td>$row[cognome] $row[nome]</td>
-                    <td><a href=modifica_dati_smartcard.php?id=$row[idsmartcard]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                    <td><a href=elimina_smartcard.php?id=$row[idsmartcard]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                    <td><a href=modifica_dati_smartcard.php?id=$row[idbadge]><img src=./immagini/modifica.png alt=Modifica></a></td>
+                    <td><a href=elimina_smartcard.php?id=$row[idbadge]><img src=./immagini/elimina.png alt=Elimina></a></td>
                 </tr>";
             }
         }
@@ -72,7 +72,7 @@ if(mysqli_num_rows($result1) != 0)
     }
 }
 else
-    print "Nessuna smart card memorizzata nel database";
+    print "Nessun badge memorizzato nel database";
 
 mysqli_close($connection);
 ?>
@@ -80,7 +80,7 @@ mysqli_close($connection);
             </table><br>
             <form class="centro" action=inserisci_dati_smartcard.php>
                 <a class="button" href=gestione_smartcard.html>Torna indietro</a></td>
-                <input class="button" type=submit value=Aggiungi&nbsp;smart&nbsp;card>
+                <input class="button" type=submit value=Aggiungi&nbsp;badge>
             </form>
         </center>
     </body>

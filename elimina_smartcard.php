@@ -37,10 +37,10 @@ mysqli_close($connection);
           <img class="logo2" src=./immagini/logo2.png alt=T>
           <h1 class="og">og</h1>
         </div>
-        <h1>SMART CARD</h1><br><br>
-        <h3>Smart card eliminata dal database</h3>
+        <h1>BADGE</h1><br><br>
+        <h3>Badge eliminato dal database</h3>
         <a class="button" href="index.html">Torna alla home</a>
-        <a class="button" href="gestione_smartcard.html">Torna alle smart card</a>
+        <a class="button" href="gestione_smartcard.html">Torna ai badge</a>
     </body>
 </html>
 

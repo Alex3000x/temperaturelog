@@ -11,7 +11,7 @@
             <img class="logo2" src=./immagini/logo2.png alt=T>
             <h1 class="og">og</h1>
         </div>
-        <h1>SMART CARD</h1><br><br>
+        <h1>BADGE</h1><br><br>
         
         
 <?php
@@ -31,7 +31,7 @@ $result = mysqli_query($connection,$query);
 $data = mysqli_fetch_array($result, MYSQLI_NUM);
 if($data[0] > 1) {
     print "
-        <h3>Errore di inserimento! ID smart card già registrato nel database</h3>";
+        <h3>Errore di inserimento! ID badge già registrato nel database</h3>";
 }
 else {
     $query = "INSERT
@@ -39,12 +39,12 @@ else {
                 VALUES ('$idutente','$codice')";
     mysqli_query($connection,$query);
     print "
-        <h3>Smart card inserita correttamente nel database</h3>";
+        <h3>Badge inserito correttamente nel database</h3>";
 }
 mysqli_close($connection);
 ?>
 
 <a class="button" href="index.html">Torna alla home</a>
-        <a class="button" href="gestione_smartcard.html">Torna alle smart card</a>
+        <a class="button" href="gestione_smartcard.html">Torna ai badge</a>
     </body>
 </html>

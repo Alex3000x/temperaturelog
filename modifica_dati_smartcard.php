@@ -11,7 +11,7 @@
       <img class="logo2" src=./immagini/logo2.png alt=T>
       <h1 class="og">og</h1>
     </div>
-    <h1>SMART CARD</h1>
+    <h1>BADGE</h1>
 
 <?php
 
@@ -49,10 +49,10 @@ if(mysqli_num_rows($result1) != 0)
 $iduser = $idutente;
 
 print "
-    <form class=centro action=modifica_smartcard.php?id=$idsmartcard method=POST><br><br>
+    <form class=centro action=modifica_smartcard.php?id=$idbadge method=POST><br><br>
       <fieldset>
-        <h3>Modifica i dati della smart card<br></h3>
-        <label for=code>ID Carta:</label>
+        <h3>Modifica i dati del badge<br></h3>
+        <label for=code>ID badge:</label>
         <input type=text name=codice value=$codice required>
         <span class=required>*</span><br><br>
         <label for=utente>Utente associato:</label>";
