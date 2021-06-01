@@ -25,7 +25,7 @@ $idutente = $_POST["idutente"];
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "SELECT *
-          FROM smartcard
+          FROM badge
           WHERE codice = '$codice'";
 $result = mysqli_query($connection,$query);
 $data = mysqli_fetch_array($result, MYSQLI_NUM);
@@ -35,7 +35,7 @@ if($data[0] > 1) {
 }
 else {
     $query = "INSERT
-                INTO smartcard (idutente, codice)
+                INTO badge (idutente, codice)
                 VALUES ('$idutente','$codice')";
     mysqli_query($connection,$query);
     print "

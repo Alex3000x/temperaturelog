@@ -8,7 +8,7 @@ $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die('
 //mysqli_select_db($database) or die ('Could not select database ' . mysqli_error());
 
 $query = "SELECT codice 
-          FROM smartcard";
+          FROM badge";
 
 $result = mysqli_query($connection, $query);
 

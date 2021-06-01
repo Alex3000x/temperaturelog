@@ -36,7 +36,7 @@ include("database.php");
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
-          FROM smartcard";
+          FROM badge";
 $result1 = mysqli_query($connection, $query);
 if(mysqli_num_rows($result1) != 0)
 {
@@ -48,8 +48,8 @@ if(mysqli_num_rows($result1) != 0)
                     <td>$i</td>
                     <td>$row[codice]</td>";
         $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
-        $query = "SELECT user.idutente, user.nome, user.cognome, smart.idsmartcard, smart.codice
-                  FROM utenti AS user, smartcard AS smart
+        $query = "SELECT user.idutente, user.nome, user.cognome, smart.idbadge, smart.codice
+                  FROM utenti AS user, badge AS smart
                   WHERE smart.idutente = user.idutente
                   AND smart.codice = '$row[codice]'
                   ORDER BY smart.codice";
@@ -73,6 +73,7 @@ if(mysqli_num_rows($result1) != 0)
 }
 else
     print "Nessuna smart card memorizzata nel database";
+
 mysqli_close($connection);
 ?>
 

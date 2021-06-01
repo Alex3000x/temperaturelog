@@ -46,8 +46,6 @@ if(strlen($datanascita) != 0)
 
 mysqli_close($connection);
 
-session_unset();
-session_destroy();
 ?>
 
 <html>

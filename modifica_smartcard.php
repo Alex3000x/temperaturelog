@@ -30,13 +30,13 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idsmartcard = $params['id'];
+$idbadge = $params['id'];
 $codice = $_POST["codice"];
 $idutente = $_POST["idutente"];
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "SELECT *
-          FROM smartcard
+          FROM badge
           WHERE codice = '$codice'";
 $result = mysqli_query($connection,$query);
 $data = mysqli_fetch_array($result, MYSQLI_NUM);
@@ -48,17 +48,17 @@ else {
 
   if(strlen($codice) != 0)
   {
-    $query = "UPDATE smartcard
+    $query = "UPDATE badge
               SET codice = '$codice'
-              WHERE idsmartcard = '$idsmartcard'";
+              WHERE idbadge = '$idbadge'";
     mysqli_query($connection,$query);
   }
 
   if(strlen($idutente) != 0)
   {
-    $query = "UPDATE smartcard
+    $query = "UPDATE badge
               SET idutente = '$idutente'
-              WHERE idsmartcard = '$idsmartcard'";
+              WHERE idbadge = '$idbadge'";
     mysqli_query($connection,$query);
   }
   print "
@@ -67,8 +67,6 @@ else {
 
 mysqli_close($connection);
 
-session_unset();
-session_destroy();
 ?>
 
       <a class="button" href="index.html">Torna alla home</a>

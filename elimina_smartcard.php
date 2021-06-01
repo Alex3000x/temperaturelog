@@ -13,12 +13,12 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idsmartcard = $params["id"];
+$idbadge = $params["id"];
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "DELETE
-          FROM smartcard
-          WHERE idsmartcard = '$idsmartcard'";
+          FROM badge
+          WHERE idbadge = '$idbadge'";
           
 mysqli_query($connection,$query);
 mysqli_close($connection);

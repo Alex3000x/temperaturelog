@@ -28,14 +28,14 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idsmartcard = $params['id'];
+$idbadge = $params['id'];
 $codice = "";
 $idutente = "";
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non eseguita");
 $query = "SELECT *
-          FROM smartcard
-          WHERE idsmartcard = $idsmartcard";
+          FROM badge
+          WHERE idbadge = $idbadge";
 $result1 = mysqli_query($connection, $query);
 
 if(mysqli_num_rows($result1) != 0)
@@ -94,7 +94,7 @@ if(mysqli_num_rows($result3) != 0)
     }
 }
 mysqli_close($connection);
-session_destroy();
+
 ?>
 
         </select>

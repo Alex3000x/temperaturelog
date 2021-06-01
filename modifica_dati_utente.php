@@ -60,7 +60,7 @@ print "
         <label for=date>Data di nascita:</label>
         <input type=date name=datanascita value=$datanascita required>";
 mysqli_close($connection);
-session_destroy();
+
 ?>        
         <span class=required>*</span><br><br>
         <span class=required id=error>*&hairsp;campi obbligatori</span><br><br>

@@ -10,7 +10,7 @@ print "codice = $codice\n";
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "SELECT idutente
-          FROM smartcard
+          FROM badge
           WHERE codice = '$codice'";
 $result = mysqli_query($connection,$query);
 $data = mysqli_fetch_array($result, MYSQLI_NUM);

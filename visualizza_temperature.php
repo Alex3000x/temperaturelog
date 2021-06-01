@@ -75,7 +75,7 @@ if(mysqli_num_rows($result1) != 0)
     }
 }
 else
-    print "Nessuna smart card memorizzata nel database";
+    print "Nessuna temperatura memorizzata nel database";
 mysqli_close($connection);
 ?>
 
