@@ -16,9 +16,9 @@
     <body>
         <center>
             <div class="title">
-                <img class="logo1" src=./immagini/logo1.png alt=T>
+                <img class="logo1" src=./images/logo1.png alt=T>
                 <h1>emperature</h1>
-                <img class="logo2" src=./immagini/logo2.png alt=T>
+                <img class="logo2" src=./images/logo2.png alt=T>
                 <h1 class="og">og</h1>
             </div>
             <h1>UTENTI</h1>
@@ -55,8 +55,8 @@ if(mysqli_num_rows($result1) != 0)
                             <td>$row[cognome]</td>
                             <td>$row[nome]</td>
                             <td>$date</td>
-                            <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./immagini/modifica.png alt=Modifica></a></td>
-                            <td><a href=elimina_utente.php?id=$row[idutente]><img src=./immagini/elimina.png alt=Elimina></a></td>
+                            <td><a href=modifica_dati_utente.php?id=$row[idutente]><img src=./images/modifica.png alt=Modifica></a></td>
+                            <td><a href=elimina_utente.php?id=$row[idutente]><img src=./images/elimina.png alt=Elimina></a></td>
                         </tr>";
         $i++;
     }

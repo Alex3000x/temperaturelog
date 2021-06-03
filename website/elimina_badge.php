@@ -13,12 +13,12 @@ $url.= $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
-$idutente = $params["id"];
+$idbadge = $params["id"];
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "DELETE
-          FROM utenti
-          WHERE idutente = $idutente";
+          FROM badge
+          WHERE idbadge = '$idbadge'";
           
 mysqli_query($connection,$query);
 mysqli_close($connection);
@@ -31,15 +31,15 @@ mysqli_close($connection);
         <title>temperaturelog</title>
     </head>
     <body>
-    <div class="title">
-      <img class="logo1" src=./immagini/logo1.png alt=T>
-      <h1>emperature</h1>
-      <img class="logo2" src=./immagini/logo2.png alt=T>
-      <h1 class="og">og</h1>
-    </div>
-        <h1>UTENTI</h1><br><br>
-        <h3>Utente eliminato dal database</h3>
-        <a class="button" href="visualizza_utenti.php">Torna agli utenti</a>
+        <div class="title">
+          <img class="logo1" src=./images/logo1.png alt=T>
+          <h1>emperature</h1>
+          <img class="logo2" src=./images/logo2.png alt=T>
+          <h1 class="og">og</h1>
+        </div>
+        <h1>BADGE</h1><br><br>
+        <h3>Badge eliminato dal database</h3>
+        <a class="button" href="visualizza_badge.php">Torna ai badge</a>
     </body>
 </html>
 
