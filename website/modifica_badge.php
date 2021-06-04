@@ -70,4 +70,4 @@ mysqli_close($connection);
 ?>
       <a class="button" href="visualizza_badge.php">Torna ai badge</a>
     </body>
-</html>
+</html>

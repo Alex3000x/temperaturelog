@@ -13,17 +13,14 @@ $query = "SELECT codice
 $result = mysqli_query($connection, $query);
 
 $trovato = 0;
-
-print "Carte nel database:";
+;
 
 if(mysqli_num_rows($result) != 0) {
     while((list($cardid) = mysqli_fetch_array($result))) {
-        echo $cardid;
-        echo "\n";
-        if ($_GET['codice'] == $cardid) {
+        if ("$_GET[codice]" == "$cardid") {
             $trovato = 1;
         }
-
+		print "$cardid";
         if ($trovato == 0) {
             echo " NOT AUTHORIZED ";
         } //messaggio di risposta che nel codice di arduino è citato in if(line.indexOf("SI") > 0)
@@ -36,4 +33,4 @@ if(mysqli_num_rows($result) != 0) {
 
 
 
-?>
+?>

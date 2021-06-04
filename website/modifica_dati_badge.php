@@ -105,4 +105,4 @@ mysqli_close($connection);
       <input class="button" type="submit" value="Applica&nbsp;modifiche">
     </form>
 	</body>
-</html>
+</html>

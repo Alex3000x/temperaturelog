@@ -12,25 +12,37 @@ $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("
 $query = "SELECT idutente
           FROM badge
           WHERE codice = '$codice'";
-$result = mysqli_query($connection,$query);
-$data = mysqli_fetch_array($result, MYSQLI_NUM);
-if($data[0] > 1) {
-    $idutente = $data[0];
-    print "idutente = $idutente";
-
-    $query = "UPDATE temperature
-            SET temperatura = '$temperatura'
-            WHERE idutente = '$idutente'";
-    mysqli_query($connection,$query);   
-    // nel caso già esiste l'istanza, aggiorna la temperatura 
+$result1 = mysqli_query($connection,$query);
+$data = mysqli_fetch_array($result1);
+if(mysqli_num_rows($result1) != 0)
+{
+    	$idutente = $data[0];
+    	print "idutente = $idutente";
+        
+        $query = "SELECT *
+          FROM temperature AS temp, utenti AS user
+          WHERE user.idutente = temp.idutente
+          AND temp.idutente = '$idutente'";
+		$result2 = mysqli_query($connection,$query);
+		$data = mysqli_fetch_array($result2);
+        if(mysqli_num_rows($result2) != 0)
+        {
+        	$query = "UPDATE temperature
+                      SET temperatura = '$temperatura'
+                      WHERE idutente = '$idutente'";
+          	mysqli_query($connection,$query);   
+          	// nel caso già esiste l'istanza, aggiorna la temperatura 
+        }
+        else
+        {
+        	$query = "INSERT
+    		  	  	  INTO temperature (idutente, temperatura)
+              	  	  VALUES ('$idutente','$temperatura')";
+    		mysqli_query($connection,$query);
+    		// nel caso non esiste ancora l'istanza, ne crea una nuova con la temperatura rilevata
+        }
 }
-else {
-    $idutente = $data["idutente"];
-
-    $query = "INSERT
-              INTO temperature (idutente, temperatura)
-              VALUES ('$idutente','$temperatura')";
-    mysqli_query($connection,$query);   
-}
+else
+	print "Utente non registrato nel database";
 mysqli_close($connection);
 ?>

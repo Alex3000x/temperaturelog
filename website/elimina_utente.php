@@ -17,9 +17,16 @@ $idutente = $params["id"];
 
 $connection = mysqli_connect($DB_SERVER,$DB_USER,$DB_PASSWORD,$DB_NAME) or die("Connessione non riuscita");
 $query = "DELETE
+          FROM temperature
+          WHERE idutente = $idutente";       
+mysqli_query($connection,$query);
+$query = "DELETE
+          FROM badge
+          WHERE idutente = $idutente";       
+mysqli_query($connection,$query);
+$query = "DELETE
           FROM utenti
-          WHERE idutente = $idutente";
-          
+          WHERE idutente = $idutente";       
 mysqli_query($connection,$query);
 mysqli_close($connection);
 ?>
