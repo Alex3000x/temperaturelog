@@ -18,17 +18,17 @@
 #define SS_PIN  D8  // SDA-PIN for RC522 - RFID - SPI - Module GPIO2
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
 
-#define RedLed 9// Red pin of LED
+#define RedLed 1 // Red pin of LED
 #define GreenLed D4 // Green pin of LED
 #define BlueLed D0 // Blue pin of LED
 
 //Wireless name and password
-const char* ssid     = ""; // replace with you wireless network name
-const char* password = ""; //replace with you wireless network password
+const char* ssid     = "Wide Putin"; // replace with you wireless network name
+const char* password = "01000101"; //replace with you wireless network password
 
 // Remote site information
-const char* host = ""; // IP address of your local server or web domain
-String url = ""; // folder location of the txt file with the RFID cards identification 
+const char* host = "148.251.15.228"; // IP address of your local server or web domain
+String url = "http://temperaturelog.altervista.org/website/lettura.php"; // folder location of the txt file with the RFID cards identification 
 
 int time_buffer = 5000; // amount of time in miliseconds that the relay will remain open
 
@@ -43,7 +43,7 @@ void setup() {
   pinMode(GreenLed, OUTPUT);
   pinMode(RedLed, OUTPUT);
   digitalWrite(BlueLed, 1);
-  Serial.begin(9600);    // Initialize serial communications
+  Serial.begin(115200);    // Initialize serial communications
   SPI.begin();           // Init SPI bus
   mfrc522.PCD_Init();    // Init MFRC522
 
@@ -100,14 +100,18 @@ void loop() {
 
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
+  //Serial.println("ok 1");
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) {
+    //Serial.println("ok 2");
     Serial.println("connection failed");
     reject(10000);
     return;
   }
+  //Serial.println("ok 2");
   if (client.connect(host, httpPort)) {
-    url = "/lettura.php"; //folder location where is located the php file "lettura.php"
+    //Serial.println("ok 3");
+    url = "http://temperaturelog.altervista.org/website/lettura.php"; //folder location where is located the php file "lettura.php"
     url += "?codice=" + String(content);
     Serial.println("Connected with " + url);
     // This will send the request to the server
@@ -133,35 +137,37 @@ void loop() {
     }
 
     if (authorized_flag == 1) {
-      Serial.println("AUTHORIZED");
+      Serial.println("AUTHORIZED\n");
       authorize(200);
-      delay(2250);
+      delay(500);
 
       ////-------------------------------------------------TEMPERATURE----------------------------------------------
 
-
-      Serial.println("MLX90614");
       mlx.begin();
-      Serial.println("temperature objects: "); // about to remove
       int counter = 0;
       for (int i = 0; i < 2; i++) {
         leds_on(255, 255, 0);
-        delay(100);
+        delay(80);
         leds_off();
-        delay(100);
+        delay(80);
       }
-      delay(800);
+      delay(500);
       for (counter = 0; counter <= 10; counter = counter) {
-        temperature = (mlx.readObjectTempC() + 10);
+        temperature = (mlx.readObjectTempC() + 7);
+        Serial.print("temperature object: ");
         Serial.print(temperature);
         Serial.println("°C");
         measurement(1);
         counter = counter + 1;
+        
         if (temperature >= 35.5) {
           break;
         }
       }
       if (temperature < 35.5) {
+        measurement_flag = 0;
+      }
+      if (temperature > 41) {
         measurement_flag = 0;
       }
       else {
@@ -181,21 +187,21 @@ void loop() {
     WiFiClient client;
     const int httpPort = 80;
     if (!client.connect(host, httpPort)) {
-      Serial.println("connection failed");
+      Serial.println("\nconnection failed\n");
       reject(10000);
       return;
     }
     if (client.connect(host, httpPort)) {
-      url = "/inserisci_temperatura.php"; //folder location where is located the php file "inserisci_temperatura.php"
+      url = "http://temperaturelog.altervista.org/website/inserisci_temperatura.php"; //folder location where is located the php file "inserisci_temperatura.php"
       url += "?temperatura=" + String(temperature);
       url += "&codice=" + String(content);
       Serial.println("Connected with " + url);
-      // This will send the request to the server
       // This will send the request to the server
       client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                    "Host: " + host + "\r\n" +
                    "Connection: close\r\n\r\n");
       loading(3);
+      leds_off();
 
       // Read all the lines of the reply from server and print them to Serial
 
@@ -203,12 +209,12 @@ void loop() {
         String line = client.readStringUntil('\r');
         //Serial.print(line); //DEBUG
       }
-      Serial.println("REGISTERED"); // about to remove
+      Serial.println("REGISTERED\n");
       registered(5000);
     }
   }
   else {
-    Serial.println("FAILED"); // about to remove
+    Serial.print("FAILED\n");
     int i = 0;
     for (i = 0; i < 3; i++) {
       reject(500);
@@ -270,8 +276,8 @@ void measurement(int times) {   // turn the Yellow LED on in an alternative fadi
     }
   }
 }
-void loading(int times) {   // turn the Yellow LED on in an alternative fading
-  for (int i = 0; i < 3; i++) {
+void loading(int times) {   // turn the Yellow LED on
+  for (int i = 0; i < times; i++) {
       leds_on(255, 255, 0);
       delay(1000);
     }
@@ -285,7 +291,7 @@ void registered(int buffering) {
 // Helper routine to dump a byte array as hex values to Serial
 void dump_byte_array(byte *buffer, byte bufferSize) {
   for (byte i = 0; i < bufferSize; i++) {
-    Serial.print(buffer[i] < 0x10 ? " 0" : " ");
-    Serial.print(buffer[i], HEX);
+    //Serial.print(buffer[i] < 0x10 ? " 0" : " ");
+    //Serial.print(buffer[i], HEX);
   }
 }
