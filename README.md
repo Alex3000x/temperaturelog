@@ -29,7 +29,7 @@ Proprio per questo appena verrà aperto il sito, rimanderà direttamente a una p
 - gestione_utenti.html: pagina per la gestione degli utenti;
 <br><br>
 - index.html: pagina iniziale dove poter scegliere cosa gestire tra utenti, badge e temperature;
-- <br><br>
+<br><br>
 - inserisci_badge.php: aggiunge nel database un nuovo badge, avente i dati inseriti precedentemente in inserisci_dati_badge.php;
 <br><br>
 - inserisci_dati_badge.php: pagina dedicata all'inserimento dei dati di un badge da aggiungere al database;
@@ -65,7 +65,7 @@ N.B. È importante che sia stato precedentemente creato il database vuoto chiama
 
 <br><br><br>
 <b><h3>Ulteriori documenti e collegamenti</b></h3>
-Sono presenti immagini, font per una grafica base del sito e documenti vari che descrivono la struttura del database.
+Sono presenti immagini, font per una grafica base del sito e documenti vari che descrivono la struttura del database e quella del circuito da realizzare.
 
 <br><br><br>
 <b><h3>Contatti</b></h3>
