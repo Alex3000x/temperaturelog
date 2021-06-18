@@ -5,7 +5,7 @@
 <br><br>
 - databasescheme: contiene il database-schema SQL da importare;
 <br><br>
-- embeddedsystem: contiente il codice per il funzionamento del sistema informatico automatizzato per la telerilevazione delle temperature corporee degli utenti che si autenticano tramite badge RFID.
+- embeddedsystem: contiente il codice per il funzionamento del sistema informatico automatizzato per la telerilevazione delle temperature corporee degli utenti che si autenticano tramite badge RFID ed eventuali immagini relative allo schema del ccircuito.
 <br><br>
 
 <br><br>
