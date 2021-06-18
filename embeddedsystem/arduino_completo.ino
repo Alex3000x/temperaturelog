@@ -167,7 +167,7 @@ void loop() {
       if (temperature < 35.5) {
         measurement_flag = 0;
       }
-      if (temperature > 41) {
+      else if (temperature > 41) {
         measurement_flag = 0;
       }
       else {
